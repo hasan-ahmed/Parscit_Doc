@@ -1,9 +1,9 @@
 swagger: "2.0"
 info:
-  description: 
-    "The Parscit API allows developers to implement personalized last-mile delivery services to their users. By integrating Parscit's services into their web or mobile e-commerce platforms, they will be able to allow their customers to specify when they want their packages to be delivered. 
+  description: >
+    The Parscit API allows developers to implement personalized last-mile delivery services to their users. By integrating Parscit's services into their web or mobile e-commerce platforms, they will be able to allow their customers to specify when they want their packages to be delivered. 
     \n
-    Parscit; we stay home so your customers don't have to."
+    Parscit; we stay home so your customers don't have to.
 
     [Learn about Parscit](http://parscit.com) 
   version: "1.0.0"

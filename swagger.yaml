@@ -6,6 +6,8 @@ info:
     Parscit; we stay home so your customers don't have to.
 
     [Learn about Parscit](http://parscit.com) 
+  x-logo:
+    url: "http://static1.squarespace.com/static/563a24cfe4b0c2a50bee0645/t/56e577b845bf2119aa58d91a/1463341729138/?format=1000w"
   version: "1.0.0"
   title: Parscit
   termsOfService: http://parscit.com

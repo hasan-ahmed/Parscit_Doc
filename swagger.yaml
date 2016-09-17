@@ -60,6 +60,8 @@ paths:
         "405":
           description: Invalid input
     get:
+      tags:
+        - customers
       description: Returns all `customers` from the system that the user has access to
       operationId: findCustomers
       produces:
@@ -92,6 +94,8 @@ paths:
             $ref: '#/definitions/errorModel'  
   /customers/{id}:
     get:
+      tags:
+        - customers
       description: Returns a `customer` based on a single `id`
       operationId: findCustomerById
       produces:
@@ -165,6 +169,8 @@ paths:
         "405":
           description: Invalid input
     get:
+      tags:
+        - packages
       description: "Returns all `packages` from the system that the user has access to"
       operationId: findPackages
       produces:
@@ -197,6 +203,8 @@ paths:
             $ref: '#/definitions/errorModel'  
   /packages/{id}:
     get:
+      tags:
+        - packages
       description: "Returns a `package` based on a single `id`"
       operationId: findPackageById
       produces:
@@ -246,6 +254,8 @@ paths:
           description: Invalid ID supplied
   /closestLocation/{id}:
     get:
+      tags:
+        - packages
       description: Returns a `location` based on a single `customer`
       operationId: findClosestLocationByCustomer
       produces:

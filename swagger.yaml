@@ -24,7 +24,7 @@ tags:
     description: Access to packages you're shipping with Parscit
   - name: cities
     description: Cities in which Parscit is operating
-  - name: parscit location
+  - name: parscit-location
     description: Address of Parscit delivery processing centers
 paths:
   /cities:
@@ -279,7 +279,7 @@ paths:
   /closestLocation/{id}:
     get:
       tags:
-        - parscit location
+        - parscit-location
       summary: Get closest Parscit center to a customer
       description: Returns a `location` based on a single `customer`
       operationId: findClosestLocationByCustomer

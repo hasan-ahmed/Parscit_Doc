@@ -1,0 +1,535 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Parscit API for integrating scheduled deliveries. We stay home so your customers don't have to. \n\n[Learn about Parscit](http://parscit.com) \n\nFor this sample, you can use the api key `special-key` to test the authorization filters\n",
+        "version": "1.0.0",
+        "title": "Parscit",
+        "termsOfService": "http://parscit.com",
+        "contact": {
+            "name": "hasan.mahmed95@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "host": "parscit.com",
+    "basePath": "/api/v2",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/cities": {
+            "get": {
+                "description": "Returns all `cities` where the Parscit delivery service is available",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "cities response",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Cities"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/errorModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/customers": {
+            "post": {
+                "tags": [
+                    "customers"
+                ],
+                "description": "Add a `customer` object",
+                "operationId": "addCustomer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "`customer` object that needs to be added to the store",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Customer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Customer"
+                        }
+                    },
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            },
+            "get": {
+                "description": "Returns all `customers` from the system that the user has access to",
+                "operationId": "findCustomers",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "tags",
+                        "in": "query",
+                        "description": "tags to filter by",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "maximum number of results to return",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "customer response",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Customer"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/errorModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/customers/{id}": {
+            "get": {
+                "description": "Returns a `customer` based on a single `id`",
+                "operationId": "findCustomerById",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "`id` of `customer` to fetch",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Customer response",
+                        "schema": {
+                            "$ref": "#/definitions/Customer"
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/errorModel"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "customers"
+                ],
+                "summary": "",
+                "description": "Update an existing `customer` based on a single `id`",
+                "operationId": "updateCustomer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "`id` of `customer` to update",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Customer response",
+                        "schema": {
+                            "$ref": "#/definitions/Customer"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid ID supplied"
+                    },
+                    "404": {
+                        "description": "Pet not found"
+                    },
+                    "405": {
+                        "description": "Validation exception"
+                    }
+                }
+            }
+        },
+        "/packages": {
+            "post": {
+                "tags": [
+                    "packages"
+                ],
+                "description": "Add a `package` object",
+                "operationId": "addPackage",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "`package` object that needs to be delivered",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Packages"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Packages"
+                        }
+                    },
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            },
+            "get": {
+                "description": "Returns all `packages` from the system that the user has access to",
+                "operationId": "findPackages",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "tags",
+                        "in": "query",
+                        "description": "tags to filter by",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "maximum number of results to return",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Package response",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Packages"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/errorModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/packages/{id}": {
+            "get": {
+                "description": "Returns a `package` based on a single `id`",
+                "operationId": "findPackageById",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "`id` of `package` to fetch",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Package response",
+                        "schema": {
+                            "$ref": "#/definitions/Packages"
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/errorModel"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "packages"
+                ],
+                "description": "Update an existing `package`",
+                "operationId": "updatePackage",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "`id` of package to update",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Package response",
+                        "schema": {
+                            "$ref": "#/definitions/Packages"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid ID supplied"
+                    },
+                    "404": {
+                        "description": "Pet not found"
+                    },
+                    "405": {
+                        "description": "Validation exception"
+                    }
+                }
+            }
+        },
+        "/closestLocation/{id}": {
+            "get": {
+                "description": "Returns a `location` based on a single `customer`",
+                "operationId": "findClosestLocationByCustomer",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "`customer id` for which to find to closest `location`",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Locaiton response",
+                        "schema": {
+                            "$ref": "#/definitions/ParscitLocation"
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/errorModel"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Customer": {
+            "type": "object",
+            "required": [
+                "date_created",
+                "first_name",
+                "last_name",
+                "email",
+                "phone",
+                "address_street",
+                "address_city",
+                "address_state",
+                "address_postalCode"
+            ],
+            "properties": {
+                "date_created": {
+                    "type": "string"
+                },
+                "first_name": {
+                    "type": "string"
+                },
+                "last_name": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "string"
+                },
+                "address_street": {
+                    "type": "string"
+                },
+                "address_city": {
+                    "type": "string"
+                },
+                "address_state": {
+                    "type": "string"
+                },
+                "address_postalCode": {
+                    "type": "string"
+                }
+            }
+        },
+        "Packages": {
+            "type": "object",
+            "required": [
+                "date_created",
+                "custID",
+                "description",
+                "tracking_number",
+                "deliver_on_date",
+                "deliver_on_dow",
+                "deliver_time_begin",
+                "deliver_time_end"
+            ],
+            "properties": {
+                "date_created": {
+                    "type": "string"
+                },
+                "custID": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "tracking_number": {
+                    "type": "string"
+                },
+                "notes": {
+                    "type": "string"
+                },
+                "deliver_on_date": {
+                    "type": "string"
+                },
+                "deliver_on_dow": {
+                    "type": "string"
+                },
+                "deliver_time_begin": {
+                    "type": "string"
+                },
+                "deliver_time_end": {
+                    "type": "string"
+                },
+                "weight": {
+                    "type": "integer"
+                },
+                "height": {
+                    "type": "integer"
+                }
+            }
+        },
+        "Cities": {
+            "type": "object",
+            "required": [
+                "city"
+            ],
+            "properties": {
+                "city": {
+                    "type": "string"
+                }
+            }
+        },
+        "ParscitLocation": {
+            "type": "object",
+            "required": [
+                "address_street",
+                "address_city",
+                "address_state",
+                "address_postalCode"
+            ],
+            "properties": {
+                "address_street": {
+                    "type": "string"
+                },
+                "address_city": {
+                    "type": "string"
+                },
+                "address_state": {
+                    "type": "string"
+                },
+                "address_postalCode": {
+                    "type": "string"
+                }
+            }
+        },
+        "errorModel": {
+            "type": "object",
+            "required": [
+                "code",
+                "message"
+            ],
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

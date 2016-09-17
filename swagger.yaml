@@ -5,7 +5,6 @@ info:
 
     [Learn about Parscit](http://parscit.com) 
 
-    For this sample, you can use the api key `special-key` to test the authorization filters
   version: "1.0.0"
   title: Parscit
   termsOfService: http://parscit.com
@@ -15,7 +14,7 @@ info:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
 host: parscit.com
-basePath: /api/v2
+basePath: /api/
 schemes:
   - http
 tags:
@@ -25,6 +24,8 @@ tags:
     description: Access to packages you're shipping with Parscit
   - name: cities
     description: Cities in which Parscit is operating
+  - name: parscit location
+    description: Address of Parscit delivery processing centers
 paths:
   /cities:
     get:
@@ -278,7 +279,7 @@ paths:
   /closestLocation/{id}:
     get:
       tags:
-        - packages
+        - parscit location
       summary: Get closest Parscit center to a customer
       description: Returns a `location` based on a single `customer`
       operationId: findClosestLocationByCustomer

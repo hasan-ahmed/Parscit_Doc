@@ -18,10 +18,22 @@ host: parscit.com
 basePath: /api/v2
 schemes:
   - http
+tags:
+  - name: customers
+    description: Access to your customers 
+  - name: packages
+    description: Access to packages you're shipping with Parscit
+  - name: cities
+    description: Cities in which Parscit is operating
 paths:
   /cities:
     get:
+      summary: Get cities in which Parscit operates 
       description: Returns all `cities` where the Parscit delivery service is available
+      operationId: getCities
+      consumes:
+        - application/json
+        - application/xml
       produces:
         - application/json
       responses:
@@ -39,6 +51,7 @@ paths:
     post:
       tags:
         - customers
+      summary: Add customer
       description: "Add a `customer` object"
       operationId: addCustomer
       consumes:
@@ -62,8 +75,11 @@ paths:
     get:
       tags:
         - customers
+      summary: Get all of your customers
       description: Returns all `customers` from the system that the user has access to
-      operationId: findCustomers
+      operationId: getCustomers
+      consumes:
+        - application/json
       produces:
         - application/json
       parameters:
@@ -96,8 +112,11 @@ paths:
     get:
       tags:
         - customers
+      summary: Search for a customer
       description: Returns a `customer` based on a single `id`
       operationId: findCustomerById
+      consumes:
+        - application/json
       produces:
         - application/json
       parameters:
@@ -119,7 +138,7 @@ paths:
     put:
       tags:
         - customers
-      summary: ""
+      summary: Update a customer
       description: "Update an existing `customer` based on a single `id`"
       operationId: updateCustomer
       consumes:
@@ -148,6 +167,7 @@ paths:
     post:
       tags:
         - packages
+      summary: Add a package for Parscit to ship
       description: "Add a `package` object"
       operationId: addPackage
       consumes:
@@ -171,6 +191,7 @@ paths:
     get:
       tags:
         - packages
+      summary: Get all of your packages
       description: "Returns all `packages` from the system that the user has access to"
       operationId: findPackages
       produces:
@@ -205,6 +226,7 @@ paths:
     get:
       tags:
         - packages
+      summary: Search for a package
       description: "Returns a `package` based on a single `id`"
       operationId: findPackageById
       produces:
@@ -228,7 +250,8 @@ paths:
     put:
       tags:
         - packages
-      description: "Update an existing `package`"
+      summary: Update package
+      description: "Update an existing `package` object"
       operationId: updatePackage
       consumes:
         - application/json
@@ -256,8 +279,11 @@ paths:
     get:
       tags:
         - packages
+      summary: Get closest Parscit center to a customer
       description: Returns a `location` based on a single `customer`
       operationId: findClosestLocationByCustomer
+      consumes:
+        - application/json
       produces:
         - application/json
       parameters:

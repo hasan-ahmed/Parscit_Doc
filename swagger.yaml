@@ -1,7 +1,8 @@
 swagger: "2.0"
 info:
   description: |
-    Parscit API for integrating scheduled deliveries. We stay home so your customers don't have to. 
+    The Parscit API allows developers to implement personalized last-mile delivery services to their users. By integrating Parscit's services into their web or mobile e-commerce platforms, they will be able to allow their customers to specify when they want their packages to be delivered. 
+    Parscit; we stay home so your customers don't have to. 
 
     [Learn about Parscit](http://parscit.com) 
   version: "1.0.0"
@@ -52,7 +53,7 @@ paths:
       tags:
         - customers
       summary: Add customer
-      description: "Add a `customer` object"
+      description: "Creates a `customer` object"
       operationId: addCustomer
       consumes:
         - application/json
@@ -61,7 +62,7 @@ paths:
       parameters:
         - in: body
           name: body
-          description: "`customer` object that needs to be added to the store"
+          description: "`customer` object that needs to be added to your store database"
           required: true
           schema:
             $ref: "#/definitions/Customer"
@@ -75,9 +76,8 @@ paths:
     get:
       tags:
         - customers
-      summary: Get all of your customers
-      description: Returns all `customers` from the system that the user has access to
-      operationId: getCustomers
+      summary: Get allcustomers
+      description: Returns details about all of your `customers.
       consumes:
         - application/json
       produces:
@@ -112,8 +112,8 @@ paths:
     get:
       tags:
         - customers
-      summary: Search for a customer
-      description: Returns a `customer` based on a single `id`
+      summary: Get details for a customer
+      description: Returns details about a `customer` based on a single `id` that was returned when the customer was initally created.
       operationId: findCustomerById
       consumes:
         - application/json
@@ -139,7 +139,7 @@ paths:
       tags:
         - customers
       summary: Update a customer
-      description: "Update an existing `customer` based on a single `id`"
+      description: "Update the details of an existing `customer` based on a single `id` (returned upon customer creation)."
       operationId: updateCustomer
       consumes:
         - application/json
@@ -167,8 +167,8 @@ paths:
     post:
       tags:
         - packages
-      summary: Add a package for Parscit to ship
-      description: "Add a `package` object"
+      summary: Create a package
+      description: "Creates a `package` for Parscit to ship."
       operationId: addPackage
       consumes:
         - application/json
@@ -192,7 +192,7 @@ paths:
       tags:
         - packages
       summary: Get all of your packages
-      description: "Returns all `packages` from the system that the user has access to"
+      description: "Returns all your `packages` that have been sent to parscit"
       operationId: findPackages
       produces:
         - application/json
@@ -227,7 +227,7 @@ paths:
       tags:
         - packages
       summary: Search for a package
-      description: "Returns a `package` based on a single `id`"
+      description: "Returns a `package` based on a single `id` (provided upon package creation)"
       operationId: findPackageById
       produces:
         - application/json
@@ -251,7 +251,7 @@ paths:
       tags:
         - packages
       summary: Update package
-      description: "Update an existing `package` object"
+      description: "Update an existing `package` object by a unique `id` (provided upon package creation)"
       operationId: updatePackage
       consumes:
         - application/json

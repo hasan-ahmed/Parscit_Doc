@@ -4,7 +4,8 @@ info:
     Parscit API for integrating scheduled deliveries. We stay home so your customers don't have to. 
 
     [Learn about Parscit](http://parscit.com) 
-
+  x-logo:
+    url: 'https://raw.githubusercontent.com/hassanahmed95/Parscit_Doc/master/Parscit.png'
   version: "1.0.0"
   title: Parscit
   termsOfService: http://parscit.com

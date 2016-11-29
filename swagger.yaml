@@ -1,11 +1,8 @@
 swagger: "2.0"
 info:
   description: |
-    The Parscit API allows developers to implement personalized last-mile delivery services to their users. By integrating Parscit's services into their web or mobile e-commerce platforms, they will be able to allow their customers to specify when they want their packages to be delivered. 
-    
-    Parscit; we stay home so your customers don't have to.
+   The Parscit API allows you integrate our scheduled evening delivery services into your existing eCommerce platform. The integration process is quick and easy. Doing so will allow your customers to select a two hour delivery window in your checkout page if they live in Parscit’s serviceable area. 
 
-    [Learn about Parscit](http://parscit.com) 
   x-logo:
     url: "https://raw.githubusercontent.com/hasan-ahmed/Parscit_Doc/master/logo.png"
   version: "1.0.0"

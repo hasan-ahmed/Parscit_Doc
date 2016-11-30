@@ -9,8 +9,7 @@ info:
       - Offer the Parscit delivery service as an additional shipping option if they do live in Parscit’s serviceable area.
       - Create an order by making a POST request to `/orders`. Upon success, the response will include the address of the Parscit Warehouse that you should ship that order to along with an order id that you must include on the shipping label. 
       - Ship the box to the Parscit warehouse address provided to you. 
-    # API
-    # Basics
+    # API Basics
       - All requests must include the `Content-Type: application/json`
       - Please note that we have provided you with both a test and production API key. Orders created with your test API key will not be executed. Only use your production API key once you are ready to ship real orders.
     # Authentication

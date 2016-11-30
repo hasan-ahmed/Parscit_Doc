@@ -136,7 +136,7 @@ paths:
       parameters:
         - in: body
           name: body
-          description: "`package` object that needs to be delivered"
+          description: "`order` object that needs to be delivered"
           required: true
           schema:
             $ref: "#/definitions/Orders"
@@ -172,6 +172,40 @@ paths:
       responses:
         '200':
           description: Details about the order. 
+          schema:
+            $ref: '#/definitions/Orders_Response'
+        "404":
+          description: Order not found. Invalid id.  
+        "400":
+          description: Bad request. Invalid or missing parameter.
+        "401":
+          description: Unauthorized. API key is missing or invalid. 
+    put:
+      tags:
+        - orders
+      summary: Update an order
+      description: "Update the details of an existing `order` based on a single `id`."
+      operationId: updateCustomer
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: "`id` of `order` to update"
+          required: true
+          type: integer
+          format: int32
+        - in: body
+          name: body
+          description: "`Order` object that needs to be delivered"
+          required: true
+          schema:
+            $ref: "#/definitions/Orders_Response"
+      responses:
+        '200':
+          description: Customer response
           schema:
             $ref: '#/definitions/Orders_Response'
         "404":

@@ -4,7 +4,7 @@ info:
     This is a sample server Petstore server.
     You can find out more about Swagger at
     # Introduction
-    This API is documented in **OpenAPI format** and is based on
+    This API is documented in OpenAPI format and is based on
   x-logo:
     url: "https://raw.githubusercontent.com/hasan-ahmed/Parscit_Doc/master/logo.png"
   version: "1.0.0"

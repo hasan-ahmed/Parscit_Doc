@@ -3,11 +3,8 @@ info:
   description: |
     This is a sample server Petstore server.
     You can find out more about Swagger at
-    [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).
-    For this sample, you can use the api key `special-key` to test the authorization filters.
     # Introduction
     This API is documented in **OpenAPI format** and is based on
-    [Petstore sample](http://petstore.swagger.io/) provided by [swagger.io](http://swagger.io) team.
   x-logo:
     url: "https://raw.githubusercontent.com/hasan-ahmed/Parscit_Doc/master/logo.png"
   version: "1.0.0"

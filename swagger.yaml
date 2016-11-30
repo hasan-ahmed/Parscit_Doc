@@ -408,12 +408,8 @@ definitions:
     properties:
       shipping_address:
         description: The shipping address of the customer. 
-        allOf:
-          - $ref: '#/definitions/Shipping_Address'
       shipping_address:
         description: The customer's information. 
-        allOf:
-          - $ref: '#/definitions/Customer'
       tracking_url:
         description: The tracking link provided to you by your shipping carrier of choice for this specific package. 
         type: string
@@ -461,12 +457,8 @@ definitions:
         example: 2016-11-10T01:56:34-05:00
       shipping_address:
         description: The shipping address of the customer. 
-        allOf:
-          - $ref: '#/definitions/Shipping_Address'
       shipping_address:
         description: The customer's information. 
-        allOf:
-          - $ref: '#/definitions/Customer'
       tracking_url:
         description: The tracking link provided to you by your shipping carrier of choice for this specific package. 
         type: string

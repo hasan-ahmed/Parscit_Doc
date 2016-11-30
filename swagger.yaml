@@ -67,61 +67,6 @@ paths:
           description: Bad request. Invalid or missing parameter.
         "401":
           description: Unauthorized. API key is missing or invalid. 
-  /customers/{id}:
-    get:
-      tags:
-        - customers
-      summary: Get details for a customer
-      description: Returns details about a `customer` based on a single `id` that was returned when the customer was initally created.
-      operationId: findCustomerById
-      consumes:
-        - application/json
-      produces:
-        - application/json
-      parameters:
-        - name: id
-          in: path
-          description: "`id` of `customer` to fetch"
-          required: true
-          type: integer
-          format: int64
-      responses:
-        '200':
-          description: Customer response
-          schema:
-            $ref: '#/definitions/Customer'
-        default:
-          description: unexpected error
-          schema:
-            $ref: '#/definitions/errorModel'
-    put:
-      tags:
-        - customers
-      summary: Update a customer
-      description: "Update the details of an existing `customer` based on a single `id` (returned upon customer creation)."
-      operationId: updateCustomer
-      consumes:
-        - application/json
-      produces:
-        - application/json
-      parameters:
-        - name: id
-          in: path
-          description: "`id` of `customer` to update"
-          required: true
-          type: integer
-          format: int64
-      responses:
-        '200':
-          description: Customer response
-          schema:
-            $ref: '#/definitions/Customer'
-        "405":
-          description: Validation exception
-        "404":
-          description: Pet not found
-        "400":
-          description: Invalid ID supplied
   /orders:
     post:
       tags: 
@@ -215,24 +160,6 @@ paths:
         "401":
           description: Unauthorized. API key is missing or invalid. 
 definitions:
-  Customer:
-    type: object
-    required:
-      - first_name
-      - last_name
-      - email
-      - phone
-    properties:
-      date_created:
-        type: string
-      first_name:
-        type: string
-      last_name:
-        type: string
-      email:
-        type: string
-      phone:
-        type: string
   Shipping_Address:
     type: object
     required:
@@ -370,40 +297,6 @@ definitions:
         description: Detailed description of the item.
         type: string
         example: Small plain black t-shirt. 100% cotton. 
-  Packages:
-    type: object
-    required:
-      - date_created
-      - custID
-      - description
-      - tracking_number
-      - deliver_on_date
-      - deliver_on_dow
-      - deliver_time_begin
-      - deliver_time_end
-    properties:
-      date_created:
-        type: string
-      custID:
-        type: string
-      description:
-        type: string
-      tracking_number:
-        type: string
-      notes:
-        type: string
-      deliver_on_date:
-        type: string
-      deliver_on_dow:
-        type: string
-      deliver_time_begin:
-        type: string
-      deliver_time_end:
-        type: string
-      weight:
-        type: integer
-      height:
-        type: integer
   Cities:
     type: object
     required:

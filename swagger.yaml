@@ -319,7 +319,6 @@ definitions:
       created_at:
         description: A timestamp of when the order was created.
         type: string
-        format: date 
         example: 2016-11-10T01:56:34-05:00
       shipping_address:
         description: The shipping address of the customer. 

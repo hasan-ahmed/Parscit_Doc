@@ -33,10 +33,10 @@ basePath: /api/
 schemes:
   - http
 tags:
-  - name: orders
-    description: Access to your orders
   - name: cities
     description: Cities in which Parscit is operating
+  - name: orders
+    description: Access to your orders
 paths:
   /cities:
     post:

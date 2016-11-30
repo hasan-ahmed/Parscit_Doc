@@ -33,18 +33,14 @@ basePath: /api/
 schemes:
   - http
 tags:
-  - name: customers
-    description: Access to your customers 
-  - name: packages
-    description: Access to packages you're shipping with Parscit
+  - name: orders
+    description: Access to your orders
   - name: cities
     description: Cities in which Parscit is operating
-  - name: parscit-location
-    description: Address of Parscit delivery processing centers
 paths:
   /cities:
     get:
-      summary: Get cities in which Parscit operates 
+      summary: Get cities that are in Parscit's serviceable area. 
       description: Returns all `cities` where the Parscit delivery service is available
       operationId: getCities
       consumes:
@@ -63,6 +59,30 @@ paths:
           description: unexpected error
           schema:
             $ref: '#/definitions/errorModel'
+    post:
+      tags:
+        - cities
+      summary: Verify if the `city` specified by your customer is valid 
+      description: |
+        Returns `true` if the `city` provided is in Parscit's serviceable area. Returns `false` otherwise. 
+        **Important**: It is crucial that you make a call to this endpoint before displaying Parscit as a delivery option in your checkout page.
+      operationId: verifyCity
+      onsumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: "`customer` object that needs to be added to your store database"
+          required: true
+          schema:
+            $ref: "#/definitions/Cities"
+      responses:
+        "200":
+          description: Successful operation. 
+          schema:
+            $ref: "#/definitions/VerifyCity"
   /customers:
     post:
       tags:
@@ -390,6 +410,13 @@ definitions:
     properties:
       city:
         type: string
+  VerifyCity:
+    type: object
+    required:
+      - valid
+    properties:
+      valid:
+        type: boolean
   ParscitLocation:
     type: object
     required:

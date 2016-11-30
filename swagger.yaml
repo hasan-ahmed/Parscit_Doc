@@ -415,10 +415,6 @@ definitions:
         description: The customer's information. 
         allOf:
           - $ref: '#/definitions/Customer'
-      shipping_source:
-        description: The name of your shop.
-        type: string
-        example: My Store
       tracking_url:
         description: The tracking link provided to you by your shipping carrier of choice for this specific package. 
         type: string

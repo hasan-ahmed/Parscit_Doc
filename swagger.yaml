@@ -187,6 +187,30 @@ definitions:
         description: The Zip Code of the customer's shipping address.
         type: string
         example: H4X 1Z5
+  Customer:
+    type: object
+    required:
+      - first_name
+      - last_name
+      - phone
+      - email
+    properties:
+      first_name:
+        description: The first name of the customer.
+        type: string
+        example: John
+      last_name:
+        description: The last name of the customer.
+        type: string
+        example: Smith
+      phone:
+        description: The customer phone number.
+        type: string
+        example: (514) 555 - 8837
+      email:
+        description: The customer email.
+        type: string
+        example: hasan.mahmed95@gmail.com
   Orders:
     type: object
     required:
@@ -200,6 +224,10 @@ definitions:
         description: The shipping address of the customer. 
         allOf:
           - $ref: '#/definitions/Shipping_Address'
+      customer:
+        description: The shipping address of the customer. 
+        allOf:
+          - $ref: '#/definitions/Customer'
       shipping_source:
         description: The name of your shop.
         type: string
@@ -258,6 +286,10 @@ definitions:
         description: The shipping address of the customer. 
         allOf:
           - $ref: '#/definitions/Shipping_Address'
+      customer:
+        description: The shipping address of the customer. 
+        allOf:
+          - $ref: '#/definitions/Customer'
       shipping_source:
         description: The name of your shop.
         type: string

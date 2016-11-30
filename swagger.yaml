@@ -2,7 +2,6 @@ swagger: "2.0"
 info:
   description: |
   The Parscit API allows you integrate our scheduled evening delivery services into your existing eCommerce platform. The integration process is quick and easy. Doing so will allow your customers to select a two hour delivery window in your checkout page if they live in Parscit’s serviceable area. 
-  # Overview
   x-logo:
     url: "https://raw.githubusercontent.com/hasan-ahmed/Parscit_Doc/master/logo.png"
   version: "1.0.0"

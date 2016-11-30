@@ -39,32 +39,12 @@ tags:
     description: Cities in which Parscit is operating
 paths:
   /cities:
-    get:
-      summary: Get cities that are in Parscit's serviceable area. 
-      description: Returns all `cities` where the Parscit delivery service is available
-      operationId: getCities
-      consumes:
-        - application/json
-        - application/xml
-      produces:
-        - application/json
-      responses:
-        '200':
-          description: cities response
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Cities'
-        default:
-          description: unexpected error
-          schema:
-            $ref: '#/definitions/errorModel'
     post:
       tags:
         - cities
       summary: Verify if the `city` specified by your customer is valid 
       description: |
-        Returns `true` if the `city` provided is in Parscit's serviceable area. Returns `false` otherwise. 
+        Returns **true** if the city provided is in Parscit's serviceable area. Returns **false** otherwise. 
         **Important**: It is crucial that you make a call to this endpoint before displaying Parscit as a delivery option in your checkout page.
       operationId: verifyCity
       onsumes:
@@ -74,7 +54,7 @@ paths:
       parameters:
         - in: body
           name: body
-          description: "`customer` object that needs to be added to your store database"
+          description: "`city` entered by your customer that you wish to verify"
           required: true
           schema:
             $ref: "#/definitions/Cities"
@@ -83,6 +63,11 @@ paths:
           description: Successful operation. 
           schema:
             $ref: "#/definitions/VerifyCity"
+        "400":
+          description: Bad request. Invalid or missing parameter.
+        "401":
+          description: Unauthorized. API key is missing or invalid. 
+
   /customers:
     post:
       tags:

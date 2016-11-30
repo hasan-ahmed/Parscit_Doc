@@ -72,7 +72,7 @@ paths:
       tags: 
         - orders
       summary: Create an order
-      description: "Created an 'order' for Parscit to ship to your `customer`. This request returns crucial information that you must save in your systems. Most notably, the order **id** and the **parscit-location** where you should ship the packages."
+      description: "Creates an `order` for Parscit to ship to your `customer`. This request returns crucial information that you must save in your systems. Most notably, the order **id** to be included on the shipping label and the **parscit-location** where you should ship the packages."
       operationId: addOrder
       consumes:
         - application/json
@@ -85,7 +85,7 @@ paths:
           required: true
           schema:
             $ref: "#/definitions/Orders"
-      esponses:
+      responses:
         "200":
           description: successful operation
           schema:
@@ -178,7 +178,7 @@ definitions:
         type: string
         example: Montreal
       country:
-        description: The counry of the customer's shipping address.
+        description: The country of the customer's shipping address.
         type: string
         example: Canada
       state:
@@ -203,7 +203,7 @@ definitions:
         allOf:
           - $ref: '#/definitions/Shipping_Address'
       tracking_url:
-        description: The tracking link provided to you by your shipping carrier of choice for this specific package. 
+        description: The tracking link for this specific package. 
         type: string
         example: http://wwwapps.ups.com/WebTracking/track?trackNums=1212312
       total_price:
@@ -215,7 +215,7 @@ definitions:
         type: float
         example: 5.0
       items:
-        description: List of iterms included in the order.
+        description: List of items included in the order.
         type: array
         items:
           $ref: '#/definitions/Item'
@@ -237,6 +237,11 @@ definitions:
       - customer
       - delivery_time_begin
       - delivery_time_end
+      - tracking_url
+      - total_price
+      - total_weight
+      - items
+      - parscit-location
     properties:
       id:
         description: Unique identifier for this order. Save this `id` in your systems so that you may visibly include it on the shipping label.
@@ -256,7 +261,7 @@ definitions:
         type: string
         example: My Store
       tracking_url:
-        description: The tracking link provided to you by your shipping carrier of choice for this specific package. 
+        description: The tracking link for this specific package. 
         type: string
         example: http://wwwapps.ups.com/WebTracking/track?trackNums=1212312
       total_price:
@@ -268,7 +273,7 @@ definitions:
         type: float
         example: 5.0
       items:
-        description: List of iterms included in the order.
+        description: List of items included in the order.
         type: array
         items:
           $ref: '#/definitions/Item'

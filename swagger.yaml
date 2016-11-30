@@ -2,7 +2,7 @@ swagger: "2.0"
 info:
   description: |
     # Introduction
-    The Parscit API allows you integrate our scheduled evening delivery services into your existing eCommerce platform. The integration process is quick and easy! Once you have completed the implementation,  your customers will be able to select a two hour delivery window in your checkout page if they live in Parscit’s serviceable area. 
+    The Parscit API allows you integrate our scheduled evening delivery services into your existing eCommerce platform. The integration process is quick and easy! Once you have completed the implementation, if they live in Parscit's serviceable area, your customers will be able to select a two hour delivery window on your checkout page. 
     # Overview
     To offer Parscit’s services to your customers, your application must execute the following steps:
       - Make a POST request to `/cities` to check if the shopper lives in Parscit’s serviceable area

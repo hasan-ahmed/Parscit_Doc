@@ -303,7 +303,7 @@ definitions:
       - city
     properties:
       city:
-        description: City enterd by the customer.
+        description: City entered by the customer.
         type: string
         example: Montreal
   VerifyCity:

@@ -402,14 +402,15 @@ definitions:
     type: object
     required:
       - shipping_address 
+      - shipping_source
       - customer
       - delivery_time_begin
       - delivery_time_end
     properties:
       shipping_address:
         description: The shipping address of the customer. 
-      shipping_address:
-        description: The customer's information. 
+        allOf:
+          - $ref: '#/definitions/Shipping_Address'
       tracking_url:
         description: The tracking link provided to you by your shipping carrier of choice for this specific package. 
         type: string
@@ -441,6 +442,7 @@ definitions:
       - id
       - created_at
       - shipping_address 
+      - shipping_source
       - customer
       - delivery_time_begin
       - delivery_time_end
@@ -457,8 +459,12 @@ definitions:
         example: 2016-11-10T01:56:34-05:00
       shipping_address:
         description: The shipping address of the customer. 
-      shipping_address:
-        description: The customer's information. 
+        allOf:
+          - $ref: '#/definitions/Shipping_Address'
+      shipping_source:
+        description: The name of your shop.
+        type: string
+        example: My Store
       tracking_url:
         description: The tracking link provided to you by your shipping carrier of choice for this specific package. 
         type: string

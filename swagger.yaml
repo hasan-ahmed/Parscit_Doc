@@ -452,7 +452,7 @@ definitions:
       - delivery_time_end
     properties:
       id:
-        description: Unique identifier for this order. **Important**: Save this `id` in your systems so that you may visibly include it on the shipping label.
+        description: Unique identifier for this order. Save this `id` in your systems so that you may visibly include it on the shipping label.
         type: integer
         format: int32
         example: 3282313

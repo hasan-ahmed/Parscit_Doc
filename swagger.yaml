@@ -1,8 +1,6 @@
 swagger: "2.0"
 info:
   description: |
-    This is a sample server Petstore server.
-    You can find out more about Swagger at
     # Introduction
     This API is documented in OpenAPI format and is based on
   x-logo:

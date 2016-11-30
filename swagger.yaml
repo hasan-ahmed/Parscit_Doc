@@ -90,7 +90,7 @@ paths:
           description: successful operation
           schema:
             $ref: "#/definitions/Orders_Response"
-         "400":
+        "400":
           description: Bad request. Invalid or missing parameter.
         "401":
           description: Unauthorized. API key is missing or invalid.

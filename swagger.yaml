@@ -252,11 +252,11 @@ definitions:
       delivery_time_begin:
         description: The beginning of the two hour delivery window specified by the customer. Parscit currently only offers evening deliveries from the hours of 6:00 pm to 12:00 pm. 
         type: string
-        example: 7:00 
+        example: 7 
       delivery_time_end:
         description: The end of the two hour delivery window specified by the customer. Parscit currently only offers evening deliveries from the hours of 6:00 pm to 12:00 pm. 
         type: string
-        example: 9:00  
+        example: 9
   Orders_Response:
     type: object
     required:
@@ -314,11 +314,11 @@ definitions:
       delivery_time_begin:
         description: The beginning of the two hour delivery window specified by the customer. Parscit currently only offers evening deliveries from the hours of 6:00 pm to 12:00 pm. 
         type: string
-        example: 7:00 
+        example: 7 
       delivery_time_end:
         description: The end of the two hour delivery window specified by the customer. Parscit currently only offers evening deliveries from the hours of 6:00 pm to 12:00 pm. 
         type: string
-        example: 9:00 
+        example: 9
       parscit-location:
         description: The address of the Parscit warehouse that is the closest to your customer. Store this in your systems so that you may ship the orders to this address. 
         allOf:

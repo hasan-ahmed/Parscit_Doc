@@ -28,7 +28,7 @@ info:
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
-host: parscit.com
+host: https://xjjyceu042.execute-api.us-west-2.amazonaws.com/prod
 basePath: /api/
 schemes:
   - http

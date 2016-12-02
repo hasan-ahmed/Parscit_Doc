@@ -267,7 +267,6 @@ definitions:
       - customer
       - delivery_time_begin
       - delivery_time_end
-      - tracking_url
       - total_price
       - total_weight
       - items

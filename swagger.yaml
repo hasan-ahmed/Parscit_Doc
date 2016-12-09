@@ -28,10 +28,10 @@ info:
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
-host: https://xjjyceu042.execute-api.us-west-2.amazonaws.com/prod
+host: xjjyceu042.execute-api.us-west-2.amazonaws.com/prod
 basePath: /api/
 schemes:
-  - http
+  - https
 tags:
   - name: cities
     description: Cities in which Parscit is operating

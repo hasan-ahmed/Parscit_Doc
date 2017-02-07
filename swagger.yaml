@@ -2,13 +2,13 @@ swagger: "2.0"
 info:
   description: |
     # Introduction
-    The Parscit API allows you integrate our scheduled evening delivery services into your existing eCommerce platform. The integration process is quick and easy! Once you have completed the implementation, if they live in Parscit's serviceable area, your customers will be able to select a two hour delivery window on your checkout page. 
+    The BoxKnight API allows you integrate our scheduled evening delivery services into your existing eCommerce platform. The integration process is quick and easy! Once you have completed the implementation, if they live in BoxKnight's serviceable area, your customers will be able to select a two hour delivery window on your checkout page. 
     # Overview
-    To offer Parscit’s services to your customers, your application must execute the following steps:
-      - Make a POST request to `/cities` to check if the shopper lives in Parscit’s serviceable area
-      - Offer the Parscit delivery service as an additional shipping option if they do live in Parscit’s serviceable area.
-      - Create an order by making a POST request to `/orders`. Upon success, the response will include the address of the Parscit Warehouse that you should ship that order to along with an order id that you must include on the shipping label. 
-      - Ship the box to the Parscit warehouse address provided to you. 
+    To offer BoxKnight’s services to your customers, your application must execute the following steps:
+      - Make a POST request to `/cities` to check if the shopper lives in BoxKnight’s serviceable area
+      - Offer the BoxKnight delivery service as an additional shipping option if they do live in BoxKnight’s serviceable area.
+      - Create an order by making a POST request to `/orders`. Upon success, the response will include the address of the BoxKnight Warehouse that you should ship that order to along with an order id that you must include on the shipping label. 
+      - Ship the box to the BoxKnight warehouse address provided to you. 
     # API Basics
       - All requests must include the `Content-Type: application/json`
       - Please note that we have provided you with both a test and production API key. Orders created with your test API key will not be executed. Only use your production API key once you are ready to ship real orders.
@@ -19,8 +19,8 @@ info:
 
 
   version: "1.0.0"
-  title: Parscit
-  termsOfService: http://parscit.com
+  title: BoxKnight
+  termsOfService: http://BoxKnight.com
   contact:
     email: hasan.mahmed95@gmail.com
   license:
@@ -32,7 +32,7 @@ schemes:
   - https
 tags:
   - name: cities
-    description: Cities in which Parscit is operating
+    description: Cities in which BoxKnight is operating
   - name: orders
     description: Access to your orders
 paths:
@@ -42,8 +42,8 @@ paths:
         - cities
       summary: Verify city 
       description: |
-        Returns **true** if the city provided is in Parscit's serviceable area. Returns **false** otherwise. 
-        **Important**: It is crucial that you make a call to this endpoint before displaying Parscit as a delivery option in your checkout page.
+        Returns **true** if the city provided is in BoxKnight's serviceable area. Returns **false** otherwise. 
+        **Important**: It is crucial that you make a call to this endpoint before displaying BoxKnight as a delivery option in your checkout page.
       operationId: verifyCity
       onsumes:
         - application/json
@@ -70,7 +70,7 @@ paths:
       tags: 
         - orders
       summary: Create an order
-      description: "Creates an `order` for Parscit to ship to your `customer`. This request returns crucial information that you must save in your systems. Most notably, the order **id** to be included on the shipping label and the **parscit-location** where you should ship the packages."
+      description: "Creates an `order` for BoxKnight to ship to your `customer`. This request returns crucial information that you must save in your systems. Most notably, the order **id** to be included on the shipping label and the **boxknight-location** where you should ship the packages."
       operationId: addOrder
       consumes:
         - application/json
@@ -248,11 +248,11 @@ definitions:
         items:
           $ref: '#/definitions/Item'
       delivery_time_begin:
-        description: The beginning of the two hour delivery window specified by the customer. Parscit currently only offers evening deliveries from the hours of 6:00 pm to 12:00 pm. 
+        description: The beginning of the two hour delivery window specified by the customer. BoxKnight currently only offers evening deliveries from the hours of 6:00 pm to 12:00 pm. 
         type: string
         example: 7 
       delivery_time_end:
-        description: The end of the two hour delivery window specified by the customer. Parscit currently only offers evening deliveries from the hours of 6:00 pm to 12:00 pm. 
+        description: The end of the two hour delivery window specified by the customer. BoxKnight currently only offers evening deliveries from the hours of 6:00 pm to 12:00 pm. 
         type: string
         example: 9
   Orders_Response:
@@ -268,7 +268,7 @@ definitions:
       - total_price
       - total_weight
       - items
-      - parscit-location
+      - boxknight-location
     properties:
       id:
         description: Unique identifier for this order. Save this `id` in your systems so that you may visibly include it on the shipping label.
@@ -309,15 +309,15 @@ definitions:
         items:
           $ref: '#/definitions/Item'
       delivery_time_begin:
-        description: The beginning of the two hour delivery window specified by the customer. Parscit currently only offers evening deliveries from the hours of 6:00 pm to 12:00 pm. 
+        description: The beginning of the two hour delivery window specified by the customer. BoxKnight currently only offers evening deliveries from the hours of 6:00 pm to 12:00 pm. 
         type: string
         example: 7 
       delivery_time_end:
-        description: The end of the two hour delivery window specified by the customer. Parscit currently only offers evening deliveries from the hours of 6:00 pm to 12:00 pm. 
+        description: The end of the two hour delivery window specified by the customer. BoxKnight currently only offers evening deliveries from the hours of 6:00 pm to 12:00 pm. 
         type: string
         example: 9
-      parscit-location:
-        description: The address of the Parscit warehouse that is the closest to your customer. Store this in your systems so that you may ship the orders to this address. 
+      boxknight-location:
+        description: The address of the BoxKnight warehouse that is the closest to your customer. Store this in your systems so that you may ship the orders to this address. 
         allOf:
           - $ref: '#/definitions/ParscitLocation'
   Item:
@@ -359,23 +359,23 @@ definitions:
       - zip
     properties:
       name:
-        description: Name of the Parscit warehouse location
+        description: Name of the BoxKnight warehouse location
         type: string
-        example: Parscit Montreal - Ville St-Laurent 
+        example: BoxKnight Montreal - Ville St-Laurent 
       street:
-        description: Number and street of the Parscit warehouse location.
+        description: Number and street of the BoxKnight warehouse location.
         type: string
         example: 257 Westminster Ave. North
       city:
-        description: City of the parscit warehouse location. 
+        description: City of the BoxKnight warehouse location. 
         type: string
         example: montreal
       state:
-        description: State of the Parscit warehouse location.
+        description: State of the BoxKnight warehouse location.
         type: string
         example: QC
       zip:
-        description: Zip Code of the Parscit warehouse location.
+        description: Zip Code of the BoxKnight warehouse location.
         type: string
         example: H4X 1Z5
   errorModel:

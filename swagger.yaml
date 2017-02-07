@@ -18,8 +18,6 @@ info:
 
 
 
-  x-logo:
-    url: "https://raw.githubusercontent.com/hasan-ahmed/Parscit_Doc/master/logo.png"
   version: "1.0.0"
   title: Parscit
   termsOfService: http://parscit.com
